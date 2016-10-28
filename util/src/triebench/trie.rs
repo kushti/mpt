@@ -56,14 +56,14 @@ fn trie() {
 
     let mut key_cache = vec![vec![0; 32]; keyCacheSize];
 
-    let mut db = OverlayDB::new_temp();
-	//let mut db = MemoryDB::new();
+    //let mut db = OverlayDB::new_temp();
+    let mut db = MemoryDB::new();
 
     let mut root = H256::new();
     let mut t = TrieDBMut::new(&mut db, &mut root);
     let mut seed = H256::new();
 
-    for icnt in 0..initSize{
+    for icnt in 0..initSize {
         let k = random_value(&mut seed);
         let v = random_8_bytes(&mut seed);
         t.insert(&k, &v).unwrap();
@@ -79,7 +79,6 @@ fn trie() {
     }
 
     for bcnt in 0..blocks {
-
         for kcc in 0..500 {
             let sk = key_cache.pop().unwrap();
             key_cache.push(sk);
@@ -98,7 +97,6 @@ fn trie() {
         }
 
         for cnt in 0..modifications {
-
             let k = &key_cache[cnt];
             let v = random_8_bytes(&mut seed);
 
@@ -106,7 +104,7 @@ fn trie() {
         }
         t.commit();
         let end = PreciseTime::now();
-        println!("block: {}, time: {} ms", bcnt, start.to(end)*1000);
+        println!("block: {}, time: {} ms", bcnt, start.to(end) * 1000);
     }
 }
 
