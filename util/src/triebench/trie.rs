@@ -73,7 +73,8 @@ fn trie() {
         }
 
         if icnt % 10000 == 0 {
-            println!("Initialized {}", icnt)
+            println!("Initialized {}", icnt);
+            t.commit();
         }
     }
 
