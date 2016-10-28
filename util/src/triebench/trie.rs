@@ -56,8 +56,8 @@ fn trie() {
 
     let mut key_cache = vec![vec![0; 32]; keyCacheSize];
 
-    //let mut db = OverlayDB::new_temp();
-    let mut db = MemoryDB::new();
+    let mut db = OverlayDB::new_temp();
+    //let mut db = MemoryDB::new();
 
     let mut root = H256::new();
     let mut t = TrieDBMut::new(&mut db, &mut root);
