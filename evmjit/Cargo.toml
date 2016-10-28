@@ -1,0 +1,10 @@
+[package]
+name = "evmjit"
+version = "1.4.0"
+authors = ["debris <marek.kotewicz@gmail.com>"]
+
+[lib]
+crate-type = ["dylib"]
+
+[dependencies]
+tiny-keccak = "1.0"
