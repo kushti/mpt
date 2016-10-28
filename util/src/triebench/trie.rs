@@ -24,8 +24,7 @@ use time::PreciseTime;
 use ethcore_util::hash::*;
 use ethcore_util::bytes::*;
 use ethcore_util::trie::*;
-//use ethcore_util::memorydb::*;
-use ethcore_util::journaldb::earlymergedb::*;
+use ethcore_util::memorydb::*;
 use ethcore_util::triehash::*;
 use ethcore_util::sha3::*;
 
@@ -55,10 +54,8 @@ fn trie() {
     let mut key_cache = vec![vec![0; 32]; keyCacheSize];
 
     let mut db = OverlayDB::new_temp();
-//    let mut db = EarlyMergeDB::new_temp();
-    //let mut db = OverlayRecentDB::new_temp();
-
-	//let mut memdb = MemoryDB::new();
+	//let mut db = MemoryDB::new();
+    
     let mut root = H256::new();
     let mut t = TrieDBMut::new(&mut db, &mut root);
     let mut seed = H256::new();
